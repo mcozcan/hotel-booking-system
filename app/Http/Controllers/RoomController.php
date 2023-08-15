@@ -29,6 +29,32 @@ class RoomController extends Controller
         return redirect()->route('odalar');
     }
 
+    public function duzenle($id)
+    {
+
+        $oda_duzenle = Room::where('id','=',$id)->get();
+
+
+        return view('oda-duzenle')->with('oda_duzenle', $oda_duzenle);
+    }
+
+    public function odaupdate(Request $request)
+    {
+
+        $oda_duzenle = Room::find($request->id);
+        $oda_duzenle->kapasite = $request->kapasite;
+        $oda_duzenle->oda_turu = $request->odaturu;
+        $oda_duzenle->tek_kisi_fiyati = $request->tekfiyat;
+        $oda_duzenle->ek_kisi_fiyati = $request->ekfiyat;
+        $oda_duzenle->update();
+
+        return redirect()->route('odalar');
+    }
+
+
+
+
+
 
 
 }

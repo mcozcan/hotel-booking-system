@@ -56,9 +56,11 @@
         <th scope="row">{{$oda->id}}</th>
         <td>{{$oda->oda_turu}}</td>
         <td>{{$oda->kapasite}}</td>
-        <td>{{$oda->tek_kisi_fiyati}}</td>
-        <td>{{$oda->ek_kisi_fiyati}}</td>
-        <td>Düzenle</td>
+        <td>{{$oda->tek_kisi_fiyati}} TL</td>
+        <td>{{$oda->ek_kisi_fiyati}} TL</td>
+        <td> <a href="{{ route('oda-duzenle', $oda->id) }}"><span>Düzenle</span></a> </td>
+
+
       </tr>
 @endforeach
 
