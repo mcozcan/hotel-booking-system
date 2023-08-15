@@ -15,13 +15,14 @@
           <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="#" class="nav-link px-2 link-secondary">Ana Sayfa</a></li>
             <li><a href="#" class="nav-link px-2">Hakkımızda</a></li>
-            <li><a href="#" class="nav-link px-2">Rezervasyon Yap</a></li>
+
             @if(Auth::check())
             @if(Auth::user()->id == 1)
                 <li><a href="#" class="nav-link px-2">Rezervasyonları Gör</a></li>
-
+                <li><a href="/odalar" class="nav-link px-2">Odalar</a></li>
             @else
             <li><a href="#" class="nav-link px-2">Rezervasyonlarım</a></li>
+            <li><a href="#" class="nav-link px-2">Rezervasyon Yap</a></li>
             @endif
             @endif
 
