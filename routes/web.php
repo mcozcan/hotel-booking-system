@@ -31,6 +31,10 @@ Route::post('/oda-ekle', [App\Http\Controllers\RoomController::class, 'ekle'])->
 Route::get('/oda-duzenle/{id}', [App\Http\Controllers\RoomController::class, 'duzenle'])->name('oda-duzenle');
 Route::post('/odaupdate', [App\Http\Controllers\RoomController::class, 'odaupdate'])->name('odaupdate');
 
+// rezervasyon
+Route::get('/rezervasyon-yap', [App\Http\Controllers\RezervasyonController::class, 'rez_yap_index'])->name('rez_yap_index');
+Route::post('/rezervasyon-sorgula', [App\Http\Controllers\RezervasyonController::class, 'rez_yap_sorgula'])->name('rez_yap_sorgula');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
