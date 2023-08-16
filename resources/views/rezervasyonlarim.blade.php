@@ -1,3 +1,6 @@
+@if(Auth::check())
+
+
 @include('layouts.header')
 
 
@@ -46,3 +49,6 @@
 
 </center>
 @include('layouts.footer')
+@else
+<meta http-equiv="refresh" content="0;URL=/">
+@endif

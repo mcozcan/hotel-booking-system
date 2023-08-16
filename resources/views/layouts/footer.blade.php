@@ -9,6 +9,7 @@
         </a>
         <img src="{{asset('front/img/logo.png')}}" width="200" height="70" alt="Web Sitesi Logosu" />
         <br>
+
         <span class="mb-12  text-body-secondary">Copyright © 2023 Uzunnu. Bütün Hakları Saklıdır.</span>
       </div>
 

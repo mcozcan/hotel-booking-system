@@ -1,3 +1,7 @@
+@if(Auth::id() != 1)
+<meta http-equiv="refresh" content="0;URL=/">
+
+@else
 @include('layouts.header')
 @php
     $jsonPath = public_path('reservations.json');
@@ -15,3 +19,6 @@
 
 
 @include('layouts.footer')
+
+@endif
+
