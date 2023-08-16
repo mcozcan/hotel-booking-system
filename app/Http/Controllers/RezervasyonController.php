@@ -164,7 +164,20 @@ class RezervasyonController extends Controller
 
 
 
+public function sorgu()
+{
+    return view('rezervasyon-sorgu');
+}
 
+public function sorguajax(Request $request)
+{
+
+    $reservationNumber = $request->input('reservation_number'); // Doğru parametre adını kullanın
+
+    $reservation = Rezervasyon::where('rez_kod', $reservationNumber)->first();
+
+    return response()->json($reservation);
+}
 
 
 }

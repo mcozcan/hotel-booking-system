@@ -46,5 +46,9 @@ Route::get('/rezervasyon-sil/{id}', [App\Http\Controllers\RezervasyonController:
 Route::get('/anliksorgu', [App\Http\Controllers\RezervasyonController::class, 'anliksorgu'])->name('anliksorgu');
 
 
+Route::get('/rezervasyon-sorgula', [App\Http\Controllers\RezervasyonController::class, 'sorgu'])->name('sorgu');
+Route::get('/rezervasyon-sorgula-ajax', [App\Http\Controllers\RezervasyonController::class, 'sorguajax'])->name('sorguajax');
+
+
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
