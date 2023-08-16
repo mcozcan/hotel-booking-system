@@ -17,27 +17,18 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::middleware(['auth', 'custom_admin'])->group(function () {
+    // user tablosu tek olduğu için custom admin tanımladım böylelikle id değeri 1 olan kullanıcı admin oldu gerekli düzenleme kernel.php üzerinden yapıldı
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('/hakkimizda', [App\Http\Controllers\RoomController::class, 'hakkimizda'])->name('hakkimizda');
-// odalar
 Route::get('/odalar', [App\Http\Controllers\RoomController::class, 'index'])->name('odalar');
 Route::post('/oda-ekle', [App\Http\Controllers\RoomController::class, 'ekle'])->name('odaekle');
 Route::get('/oda-duzenle/{id}', [App\Http\Controllers\RoomController::class, 'duzenle'])->name('oda-duzenle');
 Route::post('/odaupdate', [App\Http\Controllers\RoomController::class, 'odaupdate'])->name('odaupdate');
 
-// rezervasyon
-Route::get('/rezervasyon-yap', [App\Http\Controllers\RezervasyonController::class, 'rez_yap_index'])->name('rez_yap_index');
 Route::post('/rezervasyon-sorgula', [App\Http\Controllers\RezervasyonController::class, 'rez_yap_sorgula'])->name('rez_yap_sorgula');
-Route::get('/rezervasyon-odeme/{id}', [App\Http\Controllers\RezervasyonController::class, 'rezervasyon_odeme'])->name('rezervasyon_odeme');
-Route::get('/rezervasyonlarim', [App\Http\Controllers\RezervasyonController::class, 'rezervasyonlarim'])->name('rezervasyonlarim');
-//admin
+
+
 Route::get('/rezervasyonlar', [App\Http\Controllers\RezervasyonController::class, 'rezervasyonlar'])->name('rezervasyonlar');
 Route::get('/rezervasyon-duzenle/{id}', [App\Http\Controllers\RezervasyonController::class, 'rezervasyon_duzenle'])->name('rezervasyon-duzenle');
 Route::post('/rezyaptamam', [App\Http\Controllers\RezervasyonController::class, 'rezyaptamam'])->name('rezyaptamam');
@@ -49,7 +40,20 @@ Route::get('/anliksorgu', [App\Http\Controllers\RezervasyonController::class, 'a
 
 Route::get('/rezervasyon-sorgula', [App\Http\Controllers\RezervasyonController::class, 'sorgu'])->name('sorgu');
 Route::get('/rezervasyon-sorgula-ajax', [App\Http\Controllers\RezervasyonController::class, 'sorguajax'])->name('sorguajax');
+});
 
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/hakkimizda', [App\Http\Controllers\RoomController::class, 'hakkimizda'])->name('hakkimizda');
+
+// rezervasyon
+Route::get('/rezervasyon-yap', [App\Http\Controllers\RezervasyonController::class, 'rez_yap_index'])->name('rez_yap_index');
+Route::get('/rezervasyon-odeme/{id}', [App\Http\Controllers\RezervasyonController::class, 'rezervasyon_odeme'])->name('rezervasyon_odeme');
+Route::get('/rezervasyonlarim', [App\Http\Controllers\RezervasyonController::class, 'rezervasyonlarim'])->name('rezervasyonlarim');
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
