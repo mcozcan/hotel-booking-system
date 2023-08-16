@@ -28,6 +28,11 @@
                             <p>Giriş Tarihi: ${data.giris}</p>
                             <p>Çıkış Tarihi: ${data.cikis}</p>
                             <p>Müşteri Adı: ${data.musteri_adi}</p>
+                            <p>Müşteri ID: ${data.musteri_id}</p>
+                            <p>Total Fiyat: ${data.total_fiyat}</p>
+                            <p>Oda ID: ${data.oda_id}</p>
+                            <p>Kişi Sayısı: ${data.kisi_sayisi}</p>
+
                         `;
                     } else {
                         resultContainer.innerHTML = '<p>Rezervasyon bulunamadı.</p>';

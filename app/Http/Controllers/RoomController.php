@@ -15,6 +15,14 @@ class RoomController extends Controller
 
     }
 
+    public function hakkimizda()
+    {
+        /// Controllerdan veriyi blade üzerine aktarma
+
+        return view('hakkimizda');
+
+    }
+
     public function ekle(Request $request)
     {
 

@@ -1,0 +1,9 @@
+@include('layouts.header')
+
+<center>
+    <div class="content"><div class="container"><div class="col-12"><div class="post"><div class="row"><div class="col-12"><h2>Hakkımızda</h2></div><div class="col-12 col-md-12"><h3></h3><p>Uzunnu Şirketler Grubu bünyesinde faaliyete geçen Nuitex Bilişim Teknolojileri Sanayi Ticaret A.Ş. 2013 yılında Uzunnu şirketler Grubu kurucusu Necmettin Uzun tarafından kurulmuştur. &nbsp;Ajans 007 projesi ile hizmet hayatına başlayan Nuitex Bilişim Teknolojileri Sanayi Ticaret A.Ş. , deneyimli ekibi ve geniş premium reklam ağında yer alan popüler yayıncılarıyla markalarının sesini milyonlarca kullanıcıya duyurur. Üstelik, dijitalin doğasına uygun olarak her an geliştirilen ürünleriyle, yenilikten vazgeçmeden! Hedef kitlesine dijital mecralarla ulaşarak; display, mobil, online video, native, sosyal medya, influencer marketing, performans odaklı dijital pazarlama faaliyetleri ile doğru zamanda, doğru yerde bulunur ve en doğru yayıncılarla ve reklam ürünleriyle hedefine ulaşır. Nuitex Bilişim Teknolojileri Sanayi Ticaret A.Ş. popüler yayıncılarıyla gelişmeye açık ve yenilikçidir. Nuitex Bilişim Teknolojileri Sanayi Ticaret A.Ş. , insaatsepetim.com, bulbakalımbul.com, kotucikti.com web siteleri ile faaliyetlerini sürdürmeye devam etmektedir.</p></div></div><div class="col-md-12"><div class="row"><div class="gal"></div></div></div><div class="post-share mt-5"><span></span><a href="#" class="a-sosial a-s-face extlink" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="#" class="a-sosial a-s-twitter extlink" target="_blank"><i class="fab fa-twitter"></i></a><a href="#" class="a-sosial a-s-linkedin extlink" target="_blank"><i class="fab fa-linkedin-in"></i></a><a href="#" class="a-sosial a-s-wp extlink" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div></div></div></div></div>
+</center>
+
+
+
+@include('layouts.footer')
