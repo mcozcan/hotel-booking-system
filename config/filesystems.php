@@ -28,6 +28,11 @@ return [
     |
     */
 
+    'json_storage' => [
+        'driver' => 'local',
+        'root' => storage_path('app/public'),
+    ],
+
     'disks' => [
 
         'local' => [

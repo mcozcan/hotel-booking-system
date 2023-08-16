@@ -41,10 +41,10 @@ Route::get('/rezervasyonlar', [App\Http\Controllers\RezervasyonController::class
 Route::get('/rezervasyon-duzenle/{id}', [App\Http\Controllers\RezervasyonController::class, 'rezervasyon_duzenle'])->name('rezervasyon-duzenle');
 Route::post('/rezyaptamam', [App\Http\Controllers\RezervasyonController::class, 'rezyaptamam'])->name('rezyaptamam');
 Route::post('/rezupdate', [App\Http\Controllers\RezervasyonController::class, 'rezupdate'])->name('rezupdate');
+Route::get('/anliksorgular', [App\Http\Controllers\RezervasyonController::class, 'anliksorgular'])->name('anliksorgular');
 Route::get('/rezervasyon-sil/{id}', [App\Http\Controllers\RezervasyonController::class, 'rezervasyon_sil'])->name('rezervasyon-sil');
-
+Route::get('/anliksorgu', [App\Http\Controllers\RezervasyonController::class, 'anliksorgu'])->name('anliksorgu');
 
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

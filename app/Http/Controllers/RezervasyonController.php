@@ -5,7 +5,7 @@ use App\Models\Rezervasyon;
 use App\Models\Room;
 use App\Models\Rezervsorgu;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 class RezervasyonController extends Controller
 {
     public function rez_yap_index()
@@ -30,6 +30,16 @@ class RezervasyonController extends Controller
         $yenisorgu->giris = $giris;
         $yenisorgu->cikis = $cikis;
         $yenisorgu->save();
+
+        $data = [
+            'giris' => $request->input('giris'),
+            'cikis' => $request->input('cikis'),
+            'musteriid' => $request->input('musteriid'),
+        ];
+
+        $jsonData = json_encode($data, JSON_PRETTY_PRINT);
+
+        file_put_contents(public_path('reservations.json'), $jsonData);
 
 
         $oda_sorgula = Room::where('kapasite', '>=', $request->kisi_sayisi)->get();
@@ -133,5 +143,28 @@ class RezervasyonController extends Controller
         //rezervasyonlarım sayfasına atacak
         return view('rezervasyonlarim');
     }
+
+
+
+
+
+    public function anliksorgu()
+{
+    $jsonDosyaYolu = storage_path('app/anlik_sorgu.json');
+
+    if (file_exists($jsonDosyaYolu)) {
+        $jsonData = file_get_contents($jsonDosyaYolu);
+        $anlikSorguVerileri = json_decode($jsonData);
+
+        return view('anliksorgu', ['anlikSorguVerileri' => $anlikSorguVerileri]);
+    } else {
+        return view('anliksorgu', ['anlikSorguVerileri' => null]);
+    }
+}
+
+
+
+
+
 
 }
