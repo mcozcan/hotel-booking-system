@@ -67,13 +67,32 @@ class RezervasyonController extends Controller
         return view('rezervasyon_odeme')->with(['odaid' => $odaid]);
     }
 
+    public function rezervasyon_duzenle($id) {
 
+        $rez_duzenle = Rezervasyon::where('id','=',$id)->first();
+
+        return view('rezervasyon-duzenle')->with('rez_duzenle', $rez_duzenle);
+    }
 
 
     public function rez_yap()
     {
 
         return view('rezervasyon-yap');
+    }
+
+    public function rezupdate(Request $request) {
+
+        $rez_duzenle = Rezervasyon::where('id','=',$request->rez_id)->first();
+        $rez_duzenle->giris = $request->giris;
+        $rez_duzenle->cikis = $request->cikis;
+        $rez_duzenle->kisi_sayisi = $request->kisi;
+        $rez_duzenle->musteri_adi = $request->isim;
+        $rez_duzenle->musteri_id = $request->musteri_id;
+        $rez_duzenle->total_fiyat = $request->total_fiyat;
+        $rez_duzenle->oda_id = $request->odaid;
+        $rez_duzenle->save();
+        return view('rezervasyonlar');
     }
 
     public function generateRandomNumber($length = 8) {
@@ -86,6 +105,12 @@ class RezervasyonController extends Controller
         }
 
         return $randomNumber;
+    }
+
+    public function rezervasyon_sil($id) {
+        $rez_sil = Rezervasyon::where('id','=',$id)->first();
+        $rez_sil->delete();
+        return view('rezervasyonlar');
     }
 
 

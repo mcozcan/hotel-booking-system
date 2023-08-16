@@ -38,8 +38,11 @@ Route::get('/rezervasyon-odeme/{id}', [App\Http\Controllers\RezervasyonControlle
 Route::get('/rezervasyonlarim', [App\Http\Controllers\RezervasyonController::class, 'rezervasyonlarim'])->name('rezervasyonlarim');
 //admin
 Route::get('/rezervasyonlar', [App\Http\Controllers\RezervasyonController::class, 'rezervasyonlar'])->name('rezervasyonlar');
-
+Route::get('/rezervasyon-duzenle/{id}', [App\Http\Controllers\RezervasyonController::class, 'rezervasyon_duzenle'])->name('rezervasyon-duzenle');
 Route::post('/rezyaptamam', [App\Http\Controllers\RezervasyonController::class, 'rezyaptamam'])->name('rezyaptamam');
+Route::post('/rezupdate', [App\Http\Controllers\RezervasyonController::class, 'rezupdate'])->name('rezupdate');
+Route::get('/rezervasyon-sil/{id}', [App\Http\Controllers\RezervasyonController::class, 'rezervasyon_sil'])->name('rezervasyon-sil');
+
 
 
 Auth::routes();

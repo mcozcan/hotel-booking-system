@@ -23,7 +23,7 @@
 
             @if(Auth::check())
             @if(Auth::user()->id == 1)
-                <li><a href="#" class="nav-link px-2">Rezervasyonları Gör</a></li>
+                <li><a href="/rezervasyonlar" class="nav-link px-2">Rezervasyonları Gör</a></li>
                 <li><a href="/odalar" class="nav-link px-2">Odalar</a></li>
             @else
             <li><a href="/rezervasyonlarim" class="nav-link px-2">Rezervasyonlarım</a></li>

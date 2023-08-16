@@ -3,7 +3,7 @@
 
 <center>
 
-  <h2> Rezervasyonlarım </h2>
+  <h2> Rezervasyonlar </h2>
 
 @php
 
@@ -20,6 +20,8 @@
         <th scope="col">Giriş Tarihi</th>
         <th scope="col">Çıkış Tarihi</th>
         <th scope="col">Fiyat</th>
+        <th scope="col">Düzenle</th>
+        <th scope="col">Sil</th>
       </tr>
     </thead>
     <tbody class="table-group-divider">
@@ -35,6 +37,8 @@
         <td>{{$rzv ->total_fiyat}} TL</td>
         <td>{{$rzv->giris}} </td>
         <td>{{$rzv->cikis}} </td>
+        <td> <a href="{{ route('rezervasyon-duzenle', $rzv ->id) }}"><span>Düzenle</span></a> </td>
+        <td> <a href="{{ route('rezervasyon-sil', $rzv ->id) }}"><span>Sil</span></a> </td>>
 
 
 
