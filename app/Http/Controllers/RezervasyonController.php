@@ -39,7 +39,14 @@ class RezervasyonController extends Controller
     }
 
 
+    public function rezervasyonlarim()
+    {
 
+
+
+
+        return view('rezervasyonlarim');
+    }
 
 
 
