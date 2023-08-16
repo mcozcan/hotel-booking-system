@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('musteri_id');
             $table->integer('rez_kod');
             $table->integer('total_fiyat');
+            $table->integer('oda_id');
             $table->timestamps();
         });
     }
