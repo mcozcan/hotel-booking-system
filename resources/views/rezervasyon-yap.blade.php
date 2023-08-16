@@ -2,6 +2,10 @@
 
 
 <center>
+    @if(isset($musait_odalar))
+
+    @else
+
 <form method="post" action="{{ route('rez_yap_sorgula') }}" accept-charset="UTF-8">
     @csrf
     <div class="col-md-7 col-lg-8">
@@ -11,12 +15,14 @@
 
             <div class="col-sm-6">
                 <label for="lastName" class="form-label">Giriş Tarihi</label>
-                <input name="giris" type="date" class="form-control" placeholder="" value="" required="">
+                <input id="girisTarihi" name="giris" type="date" class="form-control" placeholder="" value="" required="">
+
+                <input  name="musteriid" type="hidden" class="form-control" placeholder="" value="{{Auth::id()}}" required="">
               </div>
 
               <div class="col-sm-6">
                 <label for="lastName" class="form-label">Çıkış Tarihi</label>
-                <input name="cikis" type="date" class="form-control" placeholder="" value="" required="">
+                <input id="cikisTarihi" name="cikis" type="date" class="form-control" placeholder="" value="" required="">
               </div>
               <br>
               <br>
@@ -24,7 +30,7 @@
 <br>
             <div class="col-sm-12">
               <label for="lastName" class="form-label">Kişi Sayısı</label>
-              <select name="kisi_sayisi" id="personCount" onchange="updatePrice()">
+              <select id="kisiSayisi" name="kisi_sayisi" id="personCount" onchange="updatePrice()">
                 <option value="1">1 Kişi</option>
                 <option value="2">2 Kişi</option>
                 <option value="3">3 Kişi</option>
@@ -37,9 +43,10 @@
           </div>
           <br>
           <br>
+
     <button type="submit" class="btn btn-primary">Sorgula</button>
   </form>
-
+@endif
 @if(isset($musait_odalar))
 
 
@@ -68,7 +75,8 @@
         <td>{{$oda->kapasite}}</td>
         <td>{{$oda->tek_kisi_fiyati}} TL</td>
         <td>{{$oda->ek_kisi_fiyati}} TL</td>
-        <td> <a href=""><span>Rezervasyon Yap</span></a> </td>
+        <td> <a href="{{ route('rezervasyon_odeme', $oda->id) }}"><span>Rezervasyon Yap</span></a> </td>
+
 
 
       </tr>

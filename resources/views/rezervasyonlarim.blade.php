@@ -11,7 +11,7 @@
     $rzvoda = DB::table('rezervasyons')->where('musteri_id','=',$id)->first();
     $odaturu = DB::table('rooms')->where('id','=',$rzvoda->oda_id)->first();
 @endphp
-  <table class="table">
+  <table style="width:80%" class="table">
     <thead>
       <tr>
         <th scope="col">Oda Numarası</th>
