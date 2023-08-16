@@ -22,7 +22,7 @@ class RezervasyonController extends Controller
         $giris = $request->giris;
         $cikis = $request->cikis;
 
-        /// rezervasyon sorgusunu kaydetme
+        /// rezervasyon sorgusunu kaydetme, ilerdeki sayfaya veriyi aktarmak için kullanıldı
 
         $yenisorgu =  new Rezervsorgu();
         $yenisorgu->musteri_id = $request->musteriid;
@@ -38,13 +38,14 @@ class RezervasyonController extends Controller
         ];
 
         $jsonData = json_encode($data, JSON_PRETTY_PRINT);
-
+        // rezervasyon için tarihler çekildiğinde giriş çıkış ve müşteri id javascipt ile admin panelinde bulunan son sorgu kısmında gösterildi
         file_put_contents(public_path('reservations.json'), $jsonData);
 
 
         $oda_sorgula = Room::where('kapasite', '>=', $request->kisi_sayisi)->get();
 
         foreach ($oda_sorgula as $oda) {
+            /// aynı tarihlerde giriş çıkış yapılmasını engelleyen foreach, üzerinde uzunca uğraştım 17.08.2023 tarihinde girip 19.08.2023 tarihinde çıkış yapacak olsun başka bir müşteri için 18.08.2023 tarihindeki bir girişe izin vermemeliydi bu kısımı uzunca düşünmem gerekti
             $rezervasyonlar = Rezervasyon::where('oda_id', $oda->id)
                 ->where(function ($query) use ($giris, $cikis) {
                     $query->where('giris', '<=', $cikis)
@@ -160,6 +161,8 @@ class RezervasyonController extends Controller
     } else {
         return view('anliksorgu', ['anlikSorguVerileri' => null]);
     }
+
+        //json formatındaki veriden anlık sorgu verileri okundu
 }
 
 
@@ -171,8 +174,8 @@ public function sorgu()
 
 public function sorguajax(Request $request)
 {
-
-    $reservationNumber = $request->input('reservation_number'); // Doğru parametre adını kullanın
+    // sorgulama için javascript kullanıldı, sorguajax kısmı api gibi işlev görüyor /rezervasyon-sorgula-ajax?reservation_number=(rezervasyonnumarası) ile sorgulama yapılabilir
+    $reservationNumber = $request->input('reservation_number');
 
     $reservation = Rezervasyon::where('rez_kod', $reservationNumber)->first();
 
