@@ -17,10 +17,10 @@ Route::get('/', function () {
     return view('index');
 });
 
-Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Auth::routes();
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -36,6 +36,9 @@ Route::get('/rezervasyon-yap', [App\Http\Controllers\RezervasyonController::clas
 Route::post('/rezervasyon-sorgula', [App\Http\Controllers\RezervasyonController::class, 'rez_yap_sorgula'])->name('rez_yap_sorgula');
 Route::get('/rezervasyon-odeme/{id}', [App\Http\Controllers\RezervasyonController::class, 'rezervasyon_odeme'])->name('rezervasyon_odeme');
 Route::get('/rezervasyonlarim', [App\Http\Controllers\RezervasyonController::class, 'rezervasyonlarim'])->name('rezervasyonlarim');
+//admin
+Route::get('/rezervasyonlar', [App\Http\Controllers\RezervasyonController::class, 'rezervasyonlar'])->name('rezervasyonlar');
+
 Route::post('/rezyaptamam', [App\Http\Controllers\RezervasyonController::class, 'rezyaptamam'])->name('rezyaptamam');
 
 

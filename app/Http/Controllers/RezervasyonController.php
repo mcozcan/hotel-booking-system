@@ -53,11 +53,12 @@ class RezervasyonController extends Controller
 
     public function rezervasyonlarim()
     {
-
-
-
-
         return view('rezervasyonlarim');
+    }
+
+    public function rezervasyonlar()
+    {
+        return view('rezervasyonlar');
     }
 
     public function rezervasyon_odeme($id){
@@ -75,7 +76,7 @@ class RezervasyonController extends Controller
         return view('rezervasyon-yap');
     }
 
-    public function generateRandomNumber($length = 12) {
+    public function generateRandomNumber($length = 8) {
         $characters = '0123456789';
         $charLength = strlen($characters);
         $randomNumber = '';
@@ -91,7 +92,8 @@ class RezervasyonController extends Controller
     public function rezyaptamam(Request $request) {
 
         //rezervbasyon numarası oluşturma
-        $reznumarasi = $this->generateRandomNumber(12);
+        $reznumarasi = $this->generateRandomNumber(8);
+
         //// kayıt
         $yenirez = new Rezervasyon();
         $yenirez->giris = $request->giris;
@@ -101,10 +103,10 @@ class RezervasyonController extends Controller
         $yenirez->musteri_id = $request->musteri_id;
         $yenirez->rez_kod = $reznumarasi;
         $yenirez->total_fiyat = $request->total_fiyat;
-        $yenirez->oda_id = $request->oda_id;
+        $yenirez->oda_id = $request->odaid;
         $yenirez->save();
-
-
+        //rezervasyonlarım sayfasına atacak
+        return view('rezervasyonlarim');
     }
 
 }
