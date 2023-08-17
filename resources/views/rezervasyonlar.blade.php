@@ -18,7 +18,7 @@
     <thead>
       <tr>
 
-        <th scope="col">Oda Numarası</th>
+        <th scope="col">İşlem sırası</th>
         <th scope="col">Müşteri</th>
         <th scope="col">Oda id</th>
         <th scope="col">Kişi Sayısı</th>
