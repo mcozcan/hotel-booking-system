@@ -1,6 +1,3 @@
-@if(Auth::check())
-
-
 @include('layouts.header')
 
 
@@ -8,6 +5,7 @@
     @php
         $musteri_id = Auth::id();
     @endphp
+
     @if(isset($musait_odalar))
     <div id="result"></div>
 
@@ -105,6 +103,3 @@
 </center>
 @include('layouts.footer')
 
-@else
-<meta http-equiv="refresh" content="0;URL=/">
-@endif

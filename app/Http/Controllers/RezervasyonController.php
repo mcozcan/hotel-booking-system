@@ -17,6 +17,7 @@ class RezervasyonController extends Controller
     public function rez_yap_sorgula(Request $request)
     {
 
+
         $musait_odalar = [];
 
         $giris = $request->giris;
