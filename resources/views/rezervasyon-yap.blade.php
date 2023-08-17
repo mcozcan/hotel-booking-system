@@ -30,6 +30,8 @@
                 </div>
                 <br>
                 <br>
+                <br>
+                <br>
                 <div class="col-sm-12">
                     <label for="lastName" class="form-label">Kişi Sayısı</label>
                     <select id="kisiSayisi" name="kisi_sayisi" id="personCount" onchange="updatePrice()">
@@ -44,7 +46,8 @@
             <br>
             <br>
             <div id="result"></div>
-
+<br>
+<br>
             <button type="submit" class="btn btn-primary">Sorgula</button>
         </div>
     </form>
