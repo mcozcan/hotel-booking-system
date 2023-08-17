@@ -21,6 +21,7 @@
         <th scope="col">İşlem sırası</th>
         <th scope="col">Müşteri</th>
         <th scope="col">Oda id</th>
+        <th scope="col">Rez no</th>
         <th scope="col">Kişi Sayısı</th>
         <th scope="col">Giriş Tarihi</th>
         <th scope="col">Çıkış Tarihi</th>
@@ -38,6 +39,7 @@
         <th scope="row">{{$rzv ->id}}</th>
         <th scope="row">{{$rzv ->musteri_adi}}</th>
         <th scope="row">{{$rzv ->oda_id}}</th>
+        <th scope="row">{{$rzv ->rez_kod}}</th>
         <td>{{$rzv ->kisi_sayisi}}</td>
         <td>{{$rzv ->total_fiyat}} TL</td>
         <td>{{$rzv->giris}} </td>
