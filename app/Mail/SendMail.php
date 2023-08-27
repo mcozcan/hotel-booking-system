@@ -9,20 +9,24 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class NewRezerv extends Mailable
+class SendMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public $details;
+    public function __construct($details)
     {
         //
+        $this->details = $details;
     }
 
-    public function send() {
-
+    public function build()
+    {
+        return $this->subject('Mail Konusu')
+                    ->view('emails.sendMail');
     }
 
     /**
@@ -31,7 +35,7 @@ class NewRezerv extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New Rezerv',
+            subject: 'Send Mail',
         );
     }
 
@@ -41,7 +45,7 @@ class NewRezerv extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.sendMail',
         );
     }
 

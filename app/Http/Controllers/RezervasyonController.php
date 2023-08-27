@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Mail\SendMail;
 use App\Models\Rezervasyon;
 use App\Models\Room;
 use App\Models\Rezervsorgu;
@@ -8,6 +9,7 @@ use App\Models\User;
 use Auth;
 use App\Notifications\NewRez;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Notification;
 class RezervasyonController extends Controller
@@ -151,6 +153,15 @@ class RezervasyonController extends Controller
         //rezervasyonlarım sayfasına atacak
         Notification::send($alluser, new NewRez($name));
         $user = User::find(Auth::id());
+
+        $details = [
+            'name' => $name,
+            'body' => 'Bu e-posta Laravel mail sınıfı kullanılarak gönderilmiştir.'
+        ];
+        $mail = 'mcozcan@outlook.com.tr';
+
+        Mail::to($mail)->send(new SendMail($details));
+
         return view('rezervasyonlarim')->with('user',$user);
     }
 
