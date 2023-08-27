@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Jobs\RezervasyonEkleJob;
 use App\Mail\SendMail;
 use App\Models\Rezervasyon;
 use App\Models\Room;
@@ -71,6 +72,8 @@ class RezervasyonController extends Controller
 
     public function rezervasyonlarim()
     {
+        dispatch(new RezervasyonEkleJob());
+
         $user = User::find(Auth::id());
         return view('rezervasyonlarim')->with('user',$user);
     }
