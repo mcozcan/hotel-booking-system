@@ -8,6 +8,14 @@
 
   <h2> Rezervasyonlarım </h2>
 
+  <h1>Bildirimler</h1>
+
+  @forelse($user->notifications as $notification)
+
+        <h1>{{$notification->data['name']}}</h1>
+  @empty
+
+  @endforelse
 @php
     $id = Auth::id();
     $rezervasyonlarim = DB::table('rezervasyons')->where('musteri_id','=',$id)->get();

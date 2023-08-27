@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 use App\Models\Rezervasyon;
 use App\Models\Room;
 use App\Models\Rezervsorgu;
+use App\Models\User;
+use Auth;
+use App\Notifications\NewRez;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Notification;
 class RezervasyonController extends Controller
 {
     public function rez_yap_index()
@@ -65,7 +69,8 @@ class RezervasyonController extends Controller
 
     public function rezervasyonlarim()
     {
-        return view('rezervasyonlarim');
+        $user = User::find(Auth::id());
+        return view('rezervasyonlarim')->with('user',$user);
     }
 
     public function rezervasyonlar()
@@ -130,7 +135,7 @@ class RezervasyonController extends Controller
 
         //rezervbasyon numarası oluşturma
         $reznumarasi = $this->generateRandomNumber(8);
-
+        $alluser = User::all();
         //// kayıt
         $yenirez = new Rezervasyon();
         $yenirez->giris = $request->giris;
@@ -142,8 +147,11 @@ class RezervasyonController extends Controller
         $yenirez->total_fiyat = $request->total_fiyat;
         $yenirez->oda_id = $request->odaid;
         $yenirez->save();
+        $name = $reznumarasi;
         //rezervasyonlarım sayfasına atacak
-        return view('rezervasyonlarim');
+        Notification::send($alluser, new NewRez($name));
+        $user = User::find(Auth::id());
+        return view('rezervasyonlarim')->with('user',$user);
     }
 
 
